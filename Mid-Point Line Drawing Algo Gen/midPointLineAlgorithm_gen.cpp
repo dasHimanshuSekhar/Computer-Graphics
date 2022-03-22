@@ -2,18 +2,8 @@
 #include<math.h>
 #include<graphics.h>
 
-void swap(int *a, int *b){
-    int temp = *a;
-    *a = *b;
-    *b = temp;
-}
-
 void draw_line(int x1, int y1, int x2, int y2, int oc){
     int dy = abs(y2 - y1), dx = abs(x2 - x1), p = 2 * dy - dx;
-
-    if(oc == 4 || oc == 8){
-        swap(&x1, &x2);
-    }
 
     while(x1 <= x2){
         if(oc == 1 || oc == 5){
@@ -69,11 +59,11 @@ int main(){
     }
     //THIRD
     else if(m < -1 && x2 < 0 && y2 > 0){
-        draw_line(y1, abs(x2), y2, abs(x1), 3);
+        draw_line(y1, -x2, y2, -x1, 3);
     }
     //FOURTH
     else if(m >= -1 && x2 < 0 && y2 > 0){
-        draw_line(abs(x2), y1, abs(x1), y2, 4);
+        draw_line(-x1, y1, -x2, y2, 4);
     }
     //FIFTH
     else if(m < 1 && x2 < 0 && y2 < 0){
@@ -89,7 +79,7 @@ int main(){
     }
     //EIGHT
     else if(m >= -1 && x2 > 0 && y2 < 0){
-        draw_line(x2, -y1, x1, -y2, 8);
+        draw_line(x1, -y1, x2, -y2, 8);
     }
 
 
